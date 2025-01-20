@@ -45,5 +45,10 @@ jobs:
             echo "Building and pushing $FULL_IMAGE_NAME"
 
             # Build and push the image
-            docker buildx build --push --tag "$FULL_IMAGE_NAME" "$IMAGE_PATH"
+            docker buildx build \
+              --push \
+              --tag "$FULL_IMAGE_NAME" \
+              --label "org.opencontainers.image.source=https://github.com/rahimi-ali/personal-base-docker-images" \
+              --label "org.opencontainers.image.licenses=MIT" \
+              "$IMAGE_PATH"
           done
