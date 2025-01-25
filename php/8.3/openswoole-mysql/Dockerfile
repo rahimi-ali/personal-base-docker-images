@@ -1,4 +1,4 @@
-FROM php:8.4-alpine
+FROM php:8.3-alpine
 
 LABEL org.opencontainers.image.authors="Ali Rahimi"
 LABEL org.opencontainers.image.title="PHP 8.4 With OpenSwoole and MySQL Based on Alpine"
