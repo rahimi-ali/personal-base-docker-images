@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # Manual Trigger
 
 jobs:
-  build-and-push:
+  build-and-push-all:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,10 +22,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and Push Changed Images
+      - name: Build and Push All Images
         run: |
           # Find all Dockerfiles
-          DOCKER_FILES=$(find . -name 'Dockerfile')
+          DOCKER_FILES=$(find -name 'Dockerfile')
 
           # Loop through changed Dockerfiles
           for FILE in $DOCKER_FILES; do
