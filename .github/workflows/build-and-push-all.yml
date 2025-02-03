@@ -31,7 +31,7 @@ jobs:
           for FILE in $DOCKER_FILES; do
             # Extract path components
             IMAGE_PATH=$(dirname "$FILE")
-            IMAGE_NAME=$(echo "$IMAGE_PATH" | sed 's|/|:|' | tr '/' '-')
+            IMAGE_NAME=$(echo "$IMAGE_PATH" | sed 's|./||' | sed 's|/|:|' | tr '/' '-')
             FULL_IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME"
 
             echo "Building and pushing $FULL_IMAGE_NAME"
