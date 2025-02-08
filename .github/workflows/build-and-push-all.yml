@@ -1,7 +1,13 @@
 name: Build and Push All Docker Images
 
 on:
-  workflow_dispatch: # Manual Trigger
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to build for'
+        required: true
+        default: 'linux/amd64'
+      
 
 jobs:
   build-and-push-all:
@@ -39,17 +45,10 @@ jobs:
             # Build and push the image
             docker buildx build \
               --push \
-              --platform linux/amd64 \
+              --platform "${{ github.event.inputs.platform }}" \
               --tag "$FULL_IMAGE_NAME" \
               --label "org.opencontainers.image.source=https://github.com/rahimi-ali/personal-base-docker-images" \
               --label "org.opencontainers.image.licenses=MIT" \
               "$IMAGE_PATH"
 
-            docker buildx build \
-              --push \
-              --platform linux/arm64 \
-              --tag "$FULL_IMAGE_NAME" \
-              --label "org.opencontainers.image.source=https://github.com/rahimi-ali/personal-base-docker-images" \
-              --label "org.opencontainers.image.licenses=MIT" \
-              "$IMAGE_PATH"
           done
