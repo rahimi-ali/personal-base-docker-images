@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-and-push-all:
-    runs-on: "${{ github.event.inputs.platfrom == 'linux/arm64' && 'macos-latest' : 'ubuntu-latest' }}"
+    runs-on: "${{ github.event.inputs.platfrom == 'linux/arm64' && 'macos-latest' || 'ubuntu-latest' }}"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
