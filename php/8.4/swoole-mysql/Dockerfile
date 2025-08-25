@@ -10,4 +10,4 @@ COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
 
 RUN install-php-extensions bcmath zip redis pcntl swoole pdo_mysql
 
-RUN apk add --update nano
+RUN apk add --update nano curl bash git
