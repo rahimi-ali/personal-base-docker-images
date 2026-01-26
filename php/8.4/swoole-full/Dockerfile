@@ -10,4 +10,4 @@ COPY --from=ghcr.io/mlocati/php-extension-installer:2.9 /usr/bin/install-php-ext
 
 COPY --from=composer:2.9 /usr/bin/composer /usr/local/bin/composer
 
-RUN install-php-extensions bcmath zip redis gd pdo_mysql pdo_pgsql dom fileinfo intl exif pcntl swoole brotli bz2 csv imagick intl mongodb parallel sqlite3
+RUN install-php-extensions bcmath zip redis gd pdo_mysql pdo_pgsql dom fileinfo intl exif pcntl swoole brotli bz2 csv imagick intl mongodb sqlite3
